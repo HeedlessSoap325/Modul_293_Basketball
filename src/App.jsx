@@ -6,8 +6,8 @@ import {useState} from "react";
 
 export default function App() {
     const [states, setStates] = useState({
-        guestName: "N/A",
-        homeName: "N/A",
+        guestName: "guest",
+        homeName: "home",
         guestPoints: 0,
         homePoints: 0,
         guestsTurn: true,
