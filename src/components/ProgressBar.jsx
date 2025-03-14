@@ -6,20 +6,20 @@ export default function ProgressBar({points}){
     const [progress, setProgress] = useState(0);
 
     useEffect(()=>{
-        let width = Math.floor((points/12) * 100);
-        setProgress(width);
+        if(points >= 12){
+            setProgress(100);
+        }else {
+            setProgress(Math.floor((points / 12) * 100));
+        }
     }, [points]);
 
     return(
-        <>
-            <div className={"progress-container"}>
-                <div className={"progress-bar"} style={{
-                    width: `${progress}%`,
-                    transition: "width 0.5s ease-in-out"
-                }}>
-                    <div className={"progress-points"}>{points <= 0 ? "" : points}</div>
-                </div>
+        <div className={"progress-container"}>
+            <div className={"progress-bar"} style={{
+                width: `${progress}%`,
+            }}>
+                <div className={"progress-points"}>{points <= 0 ? "" : points}</div>
             </div>
-        </>
+        </div>
     );
 }
