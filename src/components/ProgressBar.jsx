@@ -13,10 +13,12 @@ export default function ProgressBar({points}){
     return(
         <>
             <div className={"progress-container"}>
-                <div id={"progress-bar"} className={"progress-bar"} style={{
+                <div className={"progress-bar"} style={{
                     width: `${progress}%`,
                     transition: "width 0.5s ease-in-out"
-                }}>{points}</div>
+                }}>
+                    <div className={"progress-points"}>{points <= 0 ? "" : points}</div>
+                </div>
             </div>
         </>
     );
