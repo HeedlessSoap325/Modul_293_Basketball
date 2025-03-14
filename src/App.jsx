@@ -7,9 +7,9 @@ import {useState} from "react";
 export default function App() {
     const [states, setStates] = useState({
         guestName: "N/A",
-        hostName: "N/A",
+        homeName: "N/A",
         guestPoints: 0,
-        hostPoints: 0,
+        homePoints: 0,
         guestsTurn: true,
         history: ["Game started."],
         win: false
@@ -39,7 +39,7 @@ export default function App() {
         }else{
             setStates({
                 ...states,
-                hostPoints: newPoints,
+                homePoints: newPoints,
                 guestsTurn: true,
                 win: w
             });
@@ -50,7 +50,7 @@ export default function App() {
         setStates({
             ...states,
             guestPoints: 0,
-            hostPoints: 0,
+            homePoints: 0,
             guestsTurn: true,
             history: ["Game started."],
             win: false
@@ -81,10 +81,10 @@ export default function App() {
 
                 <aside>
                     <Team label={"Home-Team"}
-                          id={"host"}
-                          name={states.hostName}
+                          id={"home"}
+                          name={states.homeName}
                           setName={(team, val) => setProps(team + "Name", val)}
-                          points={states.hostPoints}
+                          points={states.homePoints}
                           setPoints={(team, val) => onAddPoints(team, val)}
                           active={!states.guestsTurn && !states.win}/>
                 </aside>
