@@ -1,4 +1,5 @@
 import Button from "./Button.jsx";
+import ProgressBar from "./ProgressBar.jsx";
 
 export default function Team({label, name, setName, points, setPoints, active, id}){
     function onClickButton(){
@@ -23,6 +24,8 @@ export default function Team({label, name, setName, points, setPoints, active, i
             />
 
             <Button value={"Throw"} onClick={onClickButton} active={active}/>
+
+            <ProgressBar points={points}/>
         </div>
     );
 }
