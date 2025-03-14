@@ -11,7 +11,8 @@ export default function App() {
         guestPoints: 0,
         hostPoints: 0,
         guestsTurn: true,
-        history: ["Game started."]
+        history: ["Game started."],
+        win: false
     });
 
     function setProps(key, value){
@@ -22,22 +23,26 @@ export default function App() {
     }
 
     function onAddPoints(team, newPoints){
+        states.history.push(team + " throws, new points: " + newPoints);
+        let w = false;
+        if(newPoints >= 12){
+            states.history.push(team + " wins");
+            w = true;
+        }
         if(team === "guest"){
             setStates({
                 ...states,
                 guestPoints: newPoints,
-                guestsTurn: false
+                guestsTurn: false,
+                win: w
             });
         }else{
             setStates({
                 ...states,
                 hostPoints: newPoints,
-                guestsTurn: true
+                guestsTurn: true,
+                win: w
             });
-        }
-        states.history.push(team + " throws, new points: " + newPoints);
-        if(newPoints >= 12){
-            states.history.push(team + " wins");
         }
     }
 
@@ -47,7 +52,8 @@ export default function App() {
             guestPoints: 0,
             hostPoints: 0,
             guestsTurn: true,
-            history: ["Game started."]
+            history: ["Game started."],
+            win: false
         });
     }
 
@@ -62,7 +68,7 @@ export default function App() {
                           setName={(team, val) => setProps(team + "Name", val)}
                           points={states.guestPoints}
                           setPoints={(team, val) => onAddPoints(team, val)}
-                          active={states.guestsTurn}
+                          active={states.guestsTurn && !states.win}
                     />
                 </aside>
 
@@ -80,7 +86,7 @@ export default function App() {
                           setName={(team, val) => setProps(team + "Name", val)}
                           points={states.hostPoints}
                           setPoints={(team, val) => onAddPoints(team, val)}
-                          active={!states.guestsTurn}/>
+                          active={!states.guestsTurn && !states.win}/>
                 </aside>
             </section>
         </div>
