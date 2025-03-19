@@ -26,11 +26,11 @@ export default function App() {
 
     function onAddPoints(team, newPoints){
         states.history.push(team + " throws, new points: " + newPoints);
-        let w = false;
+        let win = false;
         if(newPoints >= 12){
             states.history.push(team + " wins");
-            states.victoryhistory.push(team + " has won.");
-            w = true;
+            states.victoryhistory.push(team + " has won!");
+            win = true;
             AlertWin(team);
         }
         if(team === "guest"){
@@ -38,14 +38,14 @@ export default function App() {
                 ...states,
                 guestPoints: newPoints,
                 guestsTurn: false,
-                win: w
+                win: win
             });
         }else{
             setStates({
                 ...states,
                 homePoints: newPoints,
                 guestsTurn: true,
-                win: w
+                win: win
             });
         }
     }
