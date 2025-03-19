@@ -13,7 +13,8 @@ export default function App() {
         homePoints: 0,
         guestsTurn: true,
         history: ["Game started."],
-        win: false
+        win: false,
+        victoryhistory: []
     });
 
     function setProps(key, value){
@@ -28,6 +29,7 @@ export default function App() {
         let w = false;
         if(newPoints >= 12){
             states.history.push(team + " wins");
+            states.victoryhistory.push(team + " has won.");
             w = true;
             AlertWin(team);
         }
@@ -78,6 +80,7 @@ export default function App() {
                     <History
                     history={states.history}
                     onClear={onClearButton}
+                    victoryhistory={states.victoryhistory}
                     />
                 </aside>
 
