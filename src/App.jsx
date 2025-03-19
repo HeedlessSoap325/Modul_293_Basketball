@@ -3,6 +3,7 @@ import History from "./components/History.jsx";
 
 import "./css/mvp.css";
 import {useState} from "react";
+import {AlertWin} from  "./components/Alert.jsx";
 
 export default function App() {
     const [states, setStates] = useState({
@@ -28,6 +29,7 @@ export default function App() {
         if(newPoints >= 12){
             states.history.push(team + " wins");
             w = true;
+            AlertWin(team);
         }
         if(team === "guest"){
             setStates({
